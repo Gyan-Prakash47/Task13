@@ -1,102 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>JavaScript Function Outputs - New Data</title>
+  <meta charset="UTF-8">
+  <title>JavaScript Practice Programs</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #e6f7ff;
-    }
-    .output {
-      background-color: #ffffff;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-left: 5px solid #007acc;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      padding: 20px;
+      background: #f0f2f5;
     }
     h2 {
-      color: #333333;
+      color: #333;
     }
     pre {
-      font-size: 16px;
-      white-space: pre-wrap;
+      background: #fff;
+      padding: 10px;
+      border-left: 4px solid #007bff;
     }
   </style>
 </head>
 <body>
 
-  <h1>JavaScript Function Outputs (Different Data)</h1>
+  <h2>1. Print Name and Address</h2>
+  <pre id="output1"></pre>
 
-  <div class="output" id="out1"></div>
-  <div class="output" id="out2"></div>
-  <div class="output" id="out3"></div>
-  <div class="output" id="out4"></div>
-  <div class="output" id="out5"></div>
+  <h2>2. Check if Two Variables Have Same Value and Type</h2>
+  <pre id="output2"></pre>
+
+  <h2>3. Add Two Strings and Convert to Capital Letters</h2>
+  <pre id="output3"></pre>
+
+  <h2>4. Convert Length of String to Bytes</h2>
+  <pre id="output4"></pre>
+
+  <h2>5. Round a Number to Specific Digits</h2>
+  <pre id="output5"></pre>
 
   <script>
-    // 1. Function to Filter Out Negative Numbers
-    function filterNegatives(arr) {
-      return arr.filter(num => num >= 0);
-    }
-    let result1 = filterNegatives([-12, 7.5, 0, -3.4, 14, 8.2, -9]);
-    document.getElementById("out1").innerHTML = `
-      <h2>1. Filter Out Negative Numbers</h2>
-      <pre>Input: [-12, 7.5, 0, -3.4, 14, 8.2, -9]
-Output: [${result1.join(', ')}]</pre>
-    `;
+    // 1. Print Name and Address
+    let name = "Gyan prakash";
+    let address = "Delhi, India";
+    document.getElementById("output1").innerText = `Name: ${name}\nAddress: ${address}`;
 
-    // 2. Difference with 13 Function
-    function diffWith13(num) {
-      return num > 13 ? 2 * Math.abs(num - 13) : 13 - num;
-    }
-    let result2a = diffWith13(25);
-    let result2b = diffWith13(8);
-    document.getElementById("out2").innerHTML = `
-      <h2>2. Difference With 13</h2>
-      <pre>Input: 25 → Output: ${result2a}
-Input: 8 → Output: ${result2b}</pre>
-    `;
+    // 2. Check if Two Variables Have Same Value and Type
+    let x = 100;
+    let y = "100";
+    let result2 = (x === y) ? "Same value and type" : "Not same";
+    document.getElementById("output2").innerText = `x = ${x} (${typeof x}), y = ${y} (${typeof y})\nResult: ${result2}`;
 
-    // 3. Fibonacci Series (First 12 Terms)
-    function fibonacci(n) {
-      let fib = [0, 1];
-      for (let i = 2; i < n; i++) {
-        fib[i] = fib[i - 1] + fib[i - 2];
-      }
-      return fib.slice(0, n);
-    }
-    let result3 = fibonacci(12);
-    document.getElementById("out3").innerHTML = `
-      <h2>3. Fibonacci Series (First 12 Terms)</h2>
-      <pre>${result3.join(', ')}</pre>
-    `;
+    // 3. Add Two Strings and Capitalize
+    let str1 = "hello";
+    let str2 = "world";
+    let result3 = (str1 + str2).toUpperCase();
+    document.getElementById("output3").innerText = `Combined: ${result3}`;
 
-    // 4. Sum of Multiples of 3 and 5 under 500
-    function sumMultiples(limit) {
-      let sum = 0;
-      for (let i = 0; i < limit; i++) {
-        if (i % 3 === 0 || i % 5 === 0) {
-          sum += i;
-        }
-      }
-      return sum;
-    }
-    let result4 = sumMultiples(500);
-    document.getElementById("out4").innerHTML = `
-      <h2>4. Sum of Multiples of 3 and 5 under 500</h2>
-      <pre>${result4}</pre>
-    `;
+    // 4. Convert String Length to Bytes
+    let stringInput = "Hello!";
+    let byteLength = new TextEncoder().encode(stringInput).length;
+    document.getElementById("output4").innerText = `String: "${stringInput}"\nByte Length: ${byteLength}`;
 
-    // 5. Cube using Function Object
-    let cube = new Function("n", "return n * n * n;");
-    let result5a = cube(4);
-    let result5b = cube(6);
-    document.getElementById("out5").innerHTML = `
-      <h2>5. Cube of a Number using Function Object</h2>
-      <pre>Input: 4 → Output: ${result5a}
-Input: 6 → Output: ${result5b}</pre>
-    `;
+    // 5. Round a Number to Specific Digits
+    let num = 3.1415926535;
+    let digits = 3;
+    let rounded = num.toFixed(digits);
+    document.getElementById("output5").innerText = `Original: ${num}\nRounded to ${digits} digits: ${rounded}`;
   </script>
 
 </body>
